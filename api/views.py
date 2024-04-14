@@ -39,10 +39,10 @@ def submit_blog_post(request):
         if serializer.is_valid():
             # If data is valid, save the blog post
             serializer.save()
-            #return Response(serializer.data,status=status.HTTP_201_CREATED)
-            value=BlogPost.objects.all()
-            blog_posts=BlogPostSerializer(value,many=True)
-            return render(request,'valueform.html',{'data_value':blog_posts.data})
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+            #value=BlogPost.objects.all()
+            #blog_posts=BlogPostSerializer(value,many=True)
+            #return render(request,'valueform.html',{'data_value':blog_posts.data})
         else:
             # If data is invalid, return error response
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
